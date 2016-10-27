@@ -47,20 +47,9 @@ void setup() {
   pinMode(sw_2, INPUT);
 }
 void loop() {
-  //Juego 1: este juego consiste en encender de dos en dos desde abajo hacia arriba, cuando sw_1 esta encendido
-  if (digitalRead(sw_1)==HIGH && digitalRead (sw_2)==LOW){
-      delay (300);
-      i=random (6);
-for (cont1 = 4, cont2=6; cont1 < 13; cont1 = cont1 +2,cont2 = cont2 +2) {
-      digitalWrite(cont1, HIGH);
-      digitalWrite(cont2, HIGH);
-      delay(200);
-      digitalWrite(cont1,LOW);
-      digitalWrite(cont2, LOW);
-      delay(200);
-         }  
-         //Juego2:Se prende los dos led del centro y se prenden todos los demas hacia los extremos
-         //y se apagan hacia el centro secuencialmente.
+
+//Juego1:Se prende los dos led del centro y se prenden todos los demas hacia los extremos
+//y se apagan hacia el centro secuencialmente.
     //Condicionadores de sw
     if (digitalRead(sw_1) == HIGH && digitalRead(sw_2) == HIGH) {
         delay(100);
@@ -85,7 +74,18 @@ for (cont1 = 4, cont2=6; cont1 < 13; cont1 = cont1 +2,cont2 = cont2 +2) {
     }
     delay(100);
   }
-}
+//  Juego 2: este juego consiste en encender de dos en dos desde abajo hacia arriba, cuando sw_1 esta encendido
+   if (digitalRead(sw_1)==HIGH && digitalRead (sw_2)==LOW){
+      delay (300);
+      i=random (6);
+for (cont1 = 4, cont2=6; cont1 < 13; cont1 = cont1 +2,cont2 = cont2 +2) {
+      digitalWrite(cont1, HIGH);
+      digitalWrite(cont2, HIGH);
+      delay(200);
+      digitalWrite(cont1,LOW);
+      digitalWrite(cont2, LOW);
+      delay(200);
+         }  
 }
 
-
+}
