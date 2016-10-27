@@ -1,0 +1,72 @@
+/* UNIVERSIDAD TÉCNICA DEL NORTE
+ *      FICA-CIERCOM
+ * SISTEMAS MICOPROCESADOS
+ *      NATALY OBANDO
+ */
+ /*Este programa contiene un juego de luces que se enciende 
+  * desde la mitad hacia afuera, usando ciclo for anidado, y 
+  * un random 
+  */
+  
+//Declaro variables de pines
+int led_1 = 4;
+int led_2 = 5;
+int led_3 = 6;
+int led_4 = 7;
+int led_5 = 8;
+int led_6 = 9;
+int led_7 = 10;
+int led_8 = 11;
+int led_9 = 12;
+int led_10 = 13;
+int sw_1 = 3;
+int sw_2 = 2;
+
+//Declaro variables ciclo for
+int i = 0;
+int j = 0;
+int cont = 0;
+
+void setup() {
+  //Declaro los pines de salida
+  pinMode(led_1, OUTPUT);
+  pinMode(led_2, OUTPUT);
+  pinMode(led_3, OUTPUT);
+  pinMode(led_4, OUTPUT);
+  pinMode(led_5, OUTPUT);
+  pinMode(led_6, OUTPUT);
+  pinMode(led_7, OUTPUT);
+  pinMode(led_8, OUTPUT);
+  pinMode(led_9, OUTPUT);
+  pinMode(led_10, OUTPUT);
+  //Declaro los pines de entrada
+  pinMode(sw_1, INPUT);
+  pinMode(sw_2, INPUT);
+}
+void loop() {
+    //Condicionadores de sw
+    if (digitalRead(sw_1) == HIGH && digitalRead(sw_2) == HIGH) {
+        delay(100);
+        i = random(9);
+     // Ciclo de encendido del juego de luces   
+    for (; i <= 10; i++) {
+      int k = 17;
+      int j = 9;
+      for (; j <= 13; j++) {
+        digitalWrite(j, HIGH);
+        digitalWrite(k - j, HIGH);
+        delay(50);
+        cont++;
+      }
+       // Ciclo de apagado del juego de luces 
+      int cont = 13;
+      for (; cont >= 4; cont--) {
+        digitalWrite(cont, LOW);
+        digitalWrite(k - cont, LOW);
+        delay(50);
+      }
+    }
+    delay(100);
+  }
+
+}
