@@ -21,14 +21,17 @@ int led_9 = 12;
 int led_10 = 13;
 int sw_1 = 3;
 int sw_2 = 2;
+int leds [6]={led_1,led_2,led_3,led_4,led_5,led_6};
 
 //Declaro variables ciclo for
 int i = 0;
 int j = 0;
 int cont = 0;
+int cont2=0;
+int cont1=0;
 
 void setup() {
-  //Declaro los pines de salida
+  //Declaro los pines de entrada 
   pinMode(led_1, OUTPUT);
   pinMode(led_2, OUTPUT);
   pinMode(led_3, OUTPUT);
@@ -39,11 +42,25 @@ void setup() {
   pinMode(led_8, OUTPUT);
   pinMode(led_9, OUTPUT);
   pinMode(led_10, OUTPUT);
-  //Declaro los pines de entrada
+  //Declaro los pines de salida
   pinMode(sw_1, INPUT);
   pinMode(sw_2, INPUT);
 }
 void loop() {
+  //Juego 1: este juego consiste en encender de dos en dos desde abajo hacia arriba, cuando sw_1 esta encendido
+  if (digitalRead(sw_1)==HIGH && digitalRead (sw_2)==LOW){
+      delay (300);
+      i=random (6);
+for (cont1 = 4, cont2=6; cont1 < 13; cont1 = cont1 +2,cont2 = cont2 +2) {
+      digitalWrite(cont1, HIGH);
+      digitalWrite(cont2, HIGH);
+      delay(200);
+      digitalWrite(cont1,LOW);
+      digitalWrite(cont2, LOW);
+      delay(200);
+         }  
+         //Juego2:Se prende los dos led del centro y se prenden todos los demas hacia los extremos
+         //y se apagan hacia el centro secuencialmente.
     //Condicionadores de sw
     if (digitalRead(sw_1) == HIGH && digitalRead(sw_2) == HIGH) {
         delay(100);
@@ -68,5 +85,7 @@ void loop() {
     }
     delay(100);
   }
-
 }
+}
+
+
